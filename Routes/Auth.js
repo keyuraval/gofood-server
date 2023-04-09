@@ -1,3 +1,10 @@
+global.foodData = require('../db')(function call(err, data, CatData) {
+    // console.log(data)
+    if (err) console.log(err);
+    global.foodData = data;
+    global.foodCategory = CatData;
+})
+
 const express = require('express')
 const User = require('../models/User')
 const Order = require('../models/Orders')
@@ -130,7 +137,7 @@ router.post('/getlocation', async (req, res) => {
 
     }
 })
-router.post('/foodData', async (req, res) => {
+router.get('/foodData', async (req, res) => {
     try {
         // console.log( JSON.stringify(global.foodData))
         // const userId = req.user.id;
